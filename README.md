@@ -9,12 +9,24 @@ $ git clone https://github.com/dosisod/glassic
 $ cd glassic
 ```
 
-## Building / Running
+## Building
 
-Ensure you have the most recent version of Dotnet Core SDK (currently 3.1.201).
+Ensure you have the most recent version of Dotnet Core SDK (currently 3.1.201), then run:
+
+```
+$ dotnet build src
+```
+
+## Running
 
 ```
 $ dotnet run --project src
 ```
 
-When installing Dotnet via snap, it may be aliased to `dotnet-sdk.dotnet` instead.
+## Note
+
+When installing Dotnet via snap, it may be aliased to `dotnet-sdk.dotnet` instead of just `dotnet`.
+
+## License
+
+Glassic is released under the MIT licese
