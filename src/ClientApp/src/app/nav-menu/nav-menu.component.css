@@ -1,7 +1,16 @@
+nav.navbar {
+  background: #3b98af;
+}
+
 a.navbar-brand {
   white-space: normal;
+  color: white;
   text-align: center;
   word-break: break-all;
+}
+
+a.nav-link {
+  color: white;
 }
 
 html {
@@ -14,5 +23,5 @@ html {
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+  box-shadow: 0 0.25rem 0.75rem rgb(133, 155, 164);
 }
