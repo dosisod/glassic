@@ -20,6 +20,13 @@ $ dotnet build src
 ## Running
 
 ```
+$ cd src/ClientApp/
+$ npm start
+```
+
+In another tab, run (from `glassic/`):
+
+```
 $ dotnet run --project src
 ```
 
