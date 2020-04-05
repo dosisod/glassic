@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-index',
-  template: `<pre>This is the index site!</pre>`
+  templateUrl: './index.component.html',
+  styleUrls: ['./index.component.scss']
 })
-export class IndexComponent {}
+export class IndexComponent {
+  isSideBarOpen=false;
+}

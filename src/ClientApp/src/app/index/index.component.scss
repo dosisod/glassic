@@ -1,0 +1,67 @@
+@font-face {
+  /*
+  Open-Sans is licensed under the Apache 2.0 license
+  https://fonts.google.com/specimen/Open+Sans
+  */
+
+  font-family: "open-sans";
+  src: url(./OpenSans-Regular.ttf);
+}
+
+* {
+  font-family: "open-sans";
+}
+
+ul#sidebar {
+  height: 100%;
+  position: absolute;
+  left: 0;
+  min-width: 1em;
+  background: #3b98af;
+  list-style-type: none;
+  padding-left: 1em;
+  padding-right: 1em;
+  z-index: 2;
+}
+
+li > span {
+  color: white;
+  padding-left: 2em;
+}
+
+#profile-pic {
+  stroke: white;
+  min-width: 5em;
+  min-height: 5em;
+  margin: -0.5em;
+  margin-bottom: 0.85em;
+  padding-top: 1em;
+}
+
+.sidebar-svg {
+  stroke: white;
+  min-width: 2em;
+  min-height: 4em;
+  position: relative;
+  left: 1em;
+}
+
+#last {
+  @extend .sidebar-svg;
+  position: absolute;
+  bottom: 0;
+  transform: translate(50%);
+}
+
+#last-open {
+  @extend #last;
+  right: 0;
+}
+
+#content {
+  z-index: 1;
+  width: calc(100% - 6em);
+  position: absolute;
+  right: 0;
+  padding-left: 1em;
+}
