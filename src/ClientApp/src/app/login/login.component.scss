@@ -68,16 +68,27 @@ div#bg {
   }
 }
 
-button[type=submit] {
+button {
   width: 100%;
   border: 2px solid white;
   color: white;
   transition: background-color 250ms;
   transition-timing-function: ease;
+
+  &:hover {
+    color: #3b98af;
+    background: white;
+  }
 }
-button[type=submit]:hover {
-  color: #3b98af;
-  background: white;
+
+.button-disabled {
+  cursor: default;
+  background: #2e5e6a;
+
+  &:hover {
+    background: #2e5e6a;
+    color: white;
+  }
 }
 
 .form-control:focus {

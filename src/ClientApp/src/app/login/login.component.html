@@ -9,17 +9,29 @@
     <div class="input-group-prepend">
       <span class="input-group-text" id="basic-addon1">Username</span>
     </div>
-    <input type="text" class="form-control" placeholder="username">
+    <input
+      type="text"
+      class="form-control"
+      (keyup)="updateUsernameSet($event)"
+      placeholder="username" />
   </div>
 
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text" id="basic-addon1">Password</span>
     </div>
-    <input type="password" class="form-control" placeholder="••••••••">
+    <input
+      type="password"
+      class="form-control"
+      (keyup)="updatePasswordSet($event)"
+      placeholder="••••••••" />
   </div>
 
-  <button type="submit" class="btn">Login</button>
+  <button
+    type="submit"
+    class="btn {{ shouldDisableButton() ? 'button-disabled' : '' }}"
+    (click)="handleClick($event)"
+  >Login</button>
 </div>
 
 </div>
