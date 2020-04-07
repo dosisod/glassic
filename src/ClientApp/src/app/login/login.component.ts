@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -6,24 +7,39 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  isPasswordSet=false;
-  isUsernameSet=false;
+  constructor(private http: HttpClient) {}
+
+  lastLoginSuccessfull: boolean | null=null;
+
+  username: string;
+  password: string;
 
   updateUsernameSet(event): void {
-    this.isUsernameSet=event.originalTarget.value!=""
+    this.username=event.originalTarget.value;
   }
 
   updatePasswordSet(event): void {
-    this.isPasswordSet=event.originalTarget.value!=""
+    this.password=event.originalTarget.value;
   }
 
   shouldDisableButton(): boolean {
-    return !(this.isPasswordSet && this.isUsernameSet);
+    return !(this.password && this.username);
   }
 
   handleClick(event): void {
     if (!this.shouldDisableButton()) {
-      window.location.href="/index";
+      let request={
+        "username": this.username,
+        "password": this.password
+      };
+
+      this.http.post<boolean>("/loginrequest", request).subscribe(result => {
+        this.lastLoginSuccessfull = result;
+
+        if (this.lastLoginSuccessfull) {
+          window.location.href="/index";
+        }
+      }, error => console.error(error));
     }
   }
 }

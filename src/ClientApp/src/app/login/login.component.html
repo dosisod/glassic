@@ -5,6 +5,10 @@
 <p id="title">Glassic</p>
 
 <div id="pwd-login">
+  <p
+    *ngIf="lastLoginSuccessfull==false"
+    id="login-fail"
+  >Login failed. Try again</p>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text" id="basic-addon1">Username</span>
