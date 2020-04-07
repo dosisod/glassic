@@ -18,11 +18,6 @@
   font-family: "open-sans";
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
-}
-
 div#bg {
   width: 100%;
   height: 100%;
@@ -39,7 +34,7 @@ div#bg {
   color: white;
 }
 
-#title::selection, .desc > p::selection {
+#title::selection {
   color: #3b98af;
   background-color: white;
 }
@@ -50,7 +45,7 @@ div#bg {
   padding-right: 0.25em;
 }
 
-#pwd-login {
+form {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -67,7 +62,7 @@ div#bg {
     color: #3b98af !important;
     font-size: calc( 3em + 5vw );
   }
-  #pwd-login {
+  form {
     right: 50% !important;
     transform: translate(calc( 50% + 0.5em ));
     width: calc( 100% - 1em );

@@ -1,45 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
-  constructor(private http: HttpClient) {}
-
+export class LoginComponent implements OnInit {
+  form: FormGroup;
   lastLoginSuccessfull: boolean | null=null;
 
-  username: string;
-  password: string;
+  constructor(private http: HttpClient, private fb: FormBuilder) {}
 
-  updateUsernameSet(event): void {
-    this.username=event.originalTarget.value;
-  }
-
-  updatePasswordSet(event): void {
-    this.password=event.originalTarget.value;
+  ngOnInit() {
+    this.form=this.fb.group({
+      username: '',
+      password: ''
+    })
   }
 
   shouldDisableButton(): boolean {
-    return !(this.password && this.username);
+    return !(
+      this.form.value.password &&
+      this.form.value.username
+    );
   }
 
-  handleClick(event): void {
+  handleClick(): void {
     if (!this.shouldDisableButton()) {
-      let request={
-        "username": this.username,
-        "password": this.password
-      };
+      this.http.post<boolean>('/loginrequest', this.form.value)
+        .subscribe(result => {
+          this.lastLoginSuccessfull = result;
 
-      this.http.post<boolean>("/loginrequest", request).subscribe(result => {
-        this.lastLoginSuccessfull = result;
-
-        if (this.lastLoginSuccessfull) {
-          window.location.href="/index";
-        }
-      }, error => console.error(error));
+          if (this.lastLoginSuccessfull) {
+            window.location.href = '/index';
+          }
+        }, error => console.error(error));
     }
   }
 }
